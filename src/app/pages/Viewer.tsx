@@ -7,7 +7,7 @@ import NLPViewer, {
   transformBackLink,
 } from '../../nlpviewer';
 import groupPlugin from '../../plugins/group/Group';
-import {layout} from '../layout';
+import { layout } from '../layout';
 import dialoguePlugin from '../../plugins/dialogue_box/DialogueBox';
 import { useParams } from 'react-router-dom';
 import {
@@ -16,7 +16,6 @@ import {
   deleteAnnotation,
   addLink,
   deleteLink,
-
 } from '../lib/api';
 
 interface WholePack {
@@ -56,7 +55,8 @@ function Viewer() {
       // plugins={[groupPlugin]}
       plugins={[groupPlugin, dialoguePlugin]}
       layout={layout}
-      onEvent={event => {
+      hightlighedAnnotaionId={'761'}
+      onEvent={(event) => {
         if (!id) return;
 
         console.log(event);
@@ -82,7 +82,7 @@ function Viewer() {
               singlePack: {
                 ...pack.singlePack,
                 annotations: pack.singlePack.annotations.filter(
-                  a => a.id !== event.annotationId
+                  (a) => a.id !== event.annotationId
                 ),
               },
               ontology: pack.ontology,
@@ -107,7 +107,9 @@ function Viewer() {
             setPack({
               singlePack: {
                 ...pack.singlePack,
-                links: pack.singlePack.links.filter(a => a.id !== event.linkId),
+                links: pack.singlePack.links.filter(
+                  (a) => a.id !== event.linkId
+                ),
               },
               ontology: pack.ontology,
             });

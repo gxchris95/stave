@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Tab from './Tab';
 import style from '../styles/TextViewer.module.css';
 import { IAnnotation, IPlugin, ILayout } from '../lib/interfaces';
@@ -26,10 +26,11 @@ export interface TextViewerProp {
   plugins: IPlugin[];
   onEvent?: OnEventType;
   layout: ILayout;
+  hightlighedAnnotaionId?: string;
 }
 
 
-function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
+function TextViewer({ plugins, onEvent, layout, hightlighedAnnotaionId }: TextViewerProp) {
 
   const appState = useTextViewerState();
   const dispatch = useTextViewerDispatch();
@@ -51,7 +52,22 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
 
     selectedScopeId,
     selectedScopeIndex,
+    spacingCalcuatedInitial,
   } = appState;
+
+  useEffect(() => {
+    if (hightlighedAnnotaionId && spacingCalcuatedInitial) {
+      dispatch({
+        type: 'select-annotation',
+        annotationId: hightlighedAnnotaionId,
+      });
+      dispatch({
+        type: 'jump-to-annotation',
+        annotationId: hightlighedAnnotaionId,
+      });
+    }
+  }, [hightlighedAnnotaionId, spacingCalcuatedInitial]);
+
 
   if (!textPack || !ontology) return null;
 
@@ -103,7 +119,7 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
       if (typeof p !== 'undefined'){
         return renderPlugin(p);
       }
-    } 
+    }
     return null;
   }
 
@@ -144,20 +160,20 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
       // Render Plugins.
       if (layout[areaName]  === 'plugins'){
         return renderAllPlugin();
-      }       
-  
+      }
+
       if (pluginsByName.has(layout[areaName])){
           return renderPluginByName(layout[areaName])
-      } 
-  
-      return <span>Invalid component</span>          
+      }
+
+      return <span>Invalid component</span>
   }
 
   function MiddleCenterArea(){
     const areaName = 'center-middle';
       if (typeof layout[areaName] === 'undefined' || layout[areaName] === 'default-nlp'){
         if (textPack){
-          return ( 
+          return (
             <TextArea textPack={textPack}
               annotationLegendsColored={annotationLegendsWithColor}
             />);
@@ -169,7 +185,7 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
 
   function MiddleBottomArea(){
     const areaName = 'center-bottom';
-    // When not specific plugin is defined, center bottom is 
+    // When not specific plugin is defined, center bottom is
     if (typeof layout[areaName] === 'undefined'){
       const Comp = groupPlugin.component;
       return <Comp key={groupPlugin.name} dispatch={dispatch} appState={appState} />;
@@ -183,7 +199,7 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
 
     if (typeof layout[areaName] === 'undefined' || layout[areaName] === 'default-meta'){
       if (textPack && ontology){
-        return ( 
+        return (
           <div className={style.metadata_side_container}>
             <TextDetail
               annotationLegends={annotationLegendsWithColor}
@@ -191,7 +207,7 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
               attributes={attributes}
               ontology={ontology}
             />
-          </div>      
+          </div>
         );
       }
     }
@@ -307,8 +323,8 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
                       1
                   }
                   onClick={() => dispatch({ type: 'next-scope-item' })}
-                >      
-                  →       
+                >
+                  →
                 </button>
               </div>
             )}
@@ -319,7 +335,7 @@ function TextViewer({ plugins, onEvent, layout }: TextViewerProp) {
     }
     if (layout['center-middle'] === 'example'){
       return <span>Example component</span>
-    }  
+    }
     return <div></div>
   }
 

@@ -27,6 +27,7 @@ export type State = {
   highlightedLinkIds: string[];
 
   spacingCalcuated: boolean;
+  spacingCalcuatedInitial: boolean;
   spacedText: string | null;
   charMoveMap: Map<number, number>;
   collpasedLineIndexes: number[];
@@ -98,6 +99,7 @@ const initialState: State = {
   ...initialSpacingState,
   ...initialAnnoEditState,
 
+  spacingCalcuatedInitial: false,
   selectedScopeId: null,
   selectedScopeIndex: 0,
 };
@@ -294,6 +296,7 @@ function textViewerReducer(state: State, action: Action): State {
               'forte.data.ontology.ontonotes_ontology.PredicateMention',
               'forte.data.ontology.base_ontology.PredicateArgument',
               'forte.data.ontology.base_ontology.PredicateLink',
+              'ft.onto.base_ontology.EntityMention',
 
               // 'forte.data.ontology.base_ontology.CoreferenceGroup',
               // 'forte.data.ontology.base_ontology.Token',
@@ -593,6 +596,7 @@ function textViewerReducer(state: State, action: Action): State {
       return {
         ...state,
         spacingCalcuated: true,
+        spacingCalcuatedInitial: true,
         spacedText: action.spacedText,
         charMoveMap: action.charMoveMap,
         annotationPositions: action.annotationPositions,

@@ -19,6 +19,7 @@ export interface NLPViewerProp {
   ontology: IOntology;
   plugins: IPlugin[];
   layout: ILayout;
+  hightlighedAnnotaionId?: string;
   onEvent?: OnEventType;
 }
 
@@ -45,5 +46,12 @@ function TextViewerFetchContainer(props: NLPViewerProp) {
     });
   }, [dispatch, props.textPack, props.ontology]);
 
-  return <TextViewer plugins={props.plugins} onEvent={props.onEvent} layout={props.layout}/>;
+  return (
+    <TextViewer
+      plugins={props.plugins}
+      onEvent={props.onEvent}
+      layout={props.layout}
+      hightlighedAnnotaionId={props.hightlighedAnnotaionId}
+    />
+  );
 }

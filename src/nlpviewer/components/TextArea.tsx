@@ -29,6 +29,7 @@ import LineWithArrow from './LineWithArrow';
 export interface TextAreaProp {
   textPack: ISinglePack;
   annotationLegendsColored: (IEntryDefinition & { color: string })[];
+  hightlighedAnnotaionId?: string;
 }
 
 function TextArea({ textPack, annotationLegendsColored }: TextAreaProp) {
