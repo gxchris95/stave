@@ -9,13 +9,13 @@
 
 This project is currently under incubation.
 
-**Stave** is a fast, light-weight, extensible web-based annotation and visualization system designed to support a wide range of text data and tasks. Rooting on modularized interface components and a syntax-rich serializable data format, Stave offers the following:
-  - Off-the-shelf support to a wide range of NLP task
-  - Extensible with plugins
+**Stave** is a fast, lightweight, extensible web-based annotation and visualization system designed to support a wide range of text data and tasks. Rooting on modularized interface components and a syntax-rich serializable data format, Stave offers the following features and benefits:
+  - Off-the-shelf annotation tool
+  - Extensible by plugins
   - Customizable data types
-  - Multi-document Support
-  - Integration to data science workflow
-  - Universal and Safe Serialization
+  - Multi-document viewer
+  - Integratable with data science workflow
+  - Universal and safe data serialization
 
 Stave was originally developed and is actively contributed by [Petuum](https://petuum.com/) in collaboration with other institutes. A mirror of this repository is maintained by [Petuum Open Source](https://github.com/petuum).
 
@@ -52,7 +52,7 @@ The default username/password for the demonstration data is admin/admin
 
 [Apache License 2.0](./LICENSE)
 
-### Companies and Universities Supporting Forte
+### Companies and Universities Supporting Stave
 <p float="left">
    <img src="./docs/_static/img/Petuum.png" width="200" align="top">
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
