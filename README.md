@@ -21,7 +21,7 @@ This project is currently under development.
 Stave was originally developed and is actively contributed by [Petuum](https://petuum.com/) in collaboration with other institutes. A mirror of this repository is maintained by [Petuum Open Source](https://github.com/petuum).
 
 ## Get Started
-Packaging coming soon ...
+Packages coming soon ...
 
 ## Developer Quick Start
 #### Environment
