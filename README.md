@@ -12,7 +12,7 @@ This project is currently under development.
 **Stave** is a fast, lightweight, extensible web-based text annotation and visualization tool designed to support a wide range of data types and NLP tasks. Stave offers the following features:
   
 - **Semantic Annotation**: supports both template and custom data types
-- **Document-level Annotation**: supports cross-document annotations and coreference
+- **Multi-document Annotation**: supports cross-document annotations and coreference
 - **Customizable Interface**: supports creation of task-specific interface with independently developed plugins
 - **Machine-Human Collaboration**: keeps human in the loop to verify and correct machine suggestions 
 - **Easy Integration**: supports seamless integration with pre-built NLP workflows 
