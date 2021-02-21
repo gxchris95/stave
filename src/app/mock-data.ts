@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/app/mock-data.ts
 import {ISinglePack} from '../nlpviewer';
+=======
+import { ISinglePack } from '../nlpviewer';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/mock-data.ts
 
 export const singlePack: ISinglePack = {
   text:
@@ -769,7 +773,11 @@ export const singlePack: ISinglePack = {
   ],
   links: [],
   groups: [],
+<<<<<<< HEAD:src/app/mock-data.ts
   attributes: {docid: 'bn/abc/00/abc_0059'},
+=======
+  attributes: { docid: 'bn/abc/00/abc_0059' },
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/mock-data.ts
   // legends: {
   //   annotations: [
   //     { id: 'l1', name: 'Token' },

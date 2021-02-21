@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
 import {signup} from '../lib/api';
 import {useHistory} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles';
+=======
+import React, { useState } from 'react';
+import { signup } from '../lib/api';
+import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
@@ -22,6 +29,7 @@ function SignUp() {
   const [password, setPassword] = useState<string>('');
   const history = useHistory();
 
+<<<<<<< HEAD
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function handleSignUp(e: any) {
     e.preventDefault();
@@ -30,15 +38,32 @@ function SignUp() {
         history.push('/');
       })
       .catch(() => {
+=======
+  function handleSignUp(e: any) {
+    e.preventDefault();
+    signup(username, password)
+      .then(e => {
+        history.push('/');
+      })
+      .catch(e => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
         setError('sign up failed');
       });
   }
 
+<<<<<<< HEAD
   function redirectLogin() {
     history.push('/login');
   }
 
   const useStyles = makeStyles(theme => ({
+=======
+  function redirectLogin(e: any) {
+    history.push("/login") 
+  }
+
+  const useStyles = makeStyles((theme) => ({
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     paper: {
       marginTop: theme.spacing(15),
       display: 'flex',
@@ -50,7 +75,11 @@ function SignUp() {
       width: '12%',
     },
     form: {
+<<<<<<< HEAD
       width: '100%',
+=======
+      width: '100%', 
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
       marginTop: theme.spacing(3),
     },
     submit: {
@@ -69,6 +98,7 @@ function SignUp() {
     showPassword: boolean;
   }
 
+<<<<<<< HEAD
   const classes = useStyles();
   const [values, setValues] = React.useState<State>({
     amount: '',
@@ -145,12 +175,81 @@ function SignUp() {
           {error ? <div>{error}</div> : null}
 
           <Button
+=======
+    const classes = useStyles();
+    const [values, setValues] = React.useState<State>({
+      amount: '',
+      password: '',
+      weight: '',
+      weightRange: '',
+      showPassword: false,
+    });
+
+    const handleClickShowPassword = () => {
+      setValues({ ...values, showPassword: !values.showPassword });
+    };
+  
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+    };
+
+  return (
+      <Container component="main" maxWidth="sm">
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h3"> 
+            Create your &nbsp;
+            <img className={classes.photo} alt= 'stave logo' src={process.env.PUBLIC_URL + '/Stave-graphic@2x.png'}></img>
+            &nbsp; account
+          </Typography>
+          <form className={classes.form} noValidate onSubmit={handleSignUp}>
+                <TextField
+                  placeholder="username"
+                  onChange={e => setUsername(e.target.value)}
+                  value={username}
+                  name="username"
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Your Username"
+                />
+                <FormControl className={classes.form}>
+                  <InputLabel htmlFor="filled-adornment-password" variant="outlined"
+                  required
+                  >Your Password</InputLabel>
+                  <OutlinedInput
+                    id="password"
+                    label="Your Password"
+                    type={values.showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
+
+            {error ? <div>{error}</div> : null}
+
+            <Button
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             onClick={handleSignUp}
+<<<<<<< HEAD
           >
             Create account
           </Button>
@@ -165,6 +264,25 @@ function SignUp() {
         </form>
       </div>
     </Container>
+=======
+            >
+              Create account
+            </Button>
+
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link 
+                  component="button"
+                  variant="body2"
+                  onClick={redirectLogin} >
+                  {"Already have an account? Sign in"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+      </Container>
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   );
 }
 

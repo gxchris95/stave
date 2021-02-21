@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react';
 import {fetchDocuments, createDocument, deleteDocument} from '../lib/api';
 import {Link, useHistory} from 'react-router-dom';
 
 function Documents() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+=======
+import React, { useState, useEffect } from 'react';
+import { fetchDocuments, createDocument, deleteDocument } from '../lib/api';
+import { Link, useHistory } from 'react-router-dom';
+
+function Documents() {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   const [docs, setDocs] = useState<any[]>([]);
   const [name, setName] = useState<string>('');
   const [pack, setPack] = useState<string>('');
@@ -11,7 +19,11 @@ function Documents() {
   const history = useHistory();
 
   useEffect(() => {
+<<<<<<< HEAD
     updateDocs().catch(() => {
+=======
+    updateDocs().catch(e => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
       history.push('/login');
     });
   }, [history]);
@@ -23,7 +35,11 @@ function Documents() {
   }
 
   function handleAdd() {
+<<<<<<< HEAD
     const project_id = window.location.pathname.split('/').pop()!;
+=======
+    let project_id = window.location.pathname.split("/").pop() !;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     createDocument(name, pack, project_id).then(() => {
       updateDocs();
     });
@@ -36,7 +52,11 @@ function Documents() {
   }
 
   if (!docs.length) {
+<<<<<<< HEAD
     console.log('empty result');
+=======
+    console.log('empty result')
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     return null;
   }
 

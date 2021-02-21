@@ -4,19 +4,28 @@
 .bubble_left {
   font-size: 16px;
   line-height: 1.4;
+<<<<<<< HEAD
   margin: 2px 0;
+=======
+  margin: 1px 0;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   padding: 8px 17px 6px 13px;
   max-width: 45%;
   position: relative;
   border-radius: 18px;
   color: black;
   align-self: flex-start;
+<<<<<<< HEAD
   background-color: #ccc;
   float: left;
+=======
+  background-color: #1084FF;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 }
 .bubble_right {
   font-size: 16px;
   line-height: 1.4;
+<<<<<<< HEAD
   margin: 2px 0;
   padding: 8px 17px 6px 13px;
   max-width: 45%;
@@ -46,6 +55,25 @@
 .table {
   font-family: "Comic Sans MS", cursive, sans-serif;
   border: 22px solid #4F7849;
+=======
+  margin: 1px 0;
+  padding: 8px 17px 6px 13px;
+  max-width: 45%;
+  position: relative;
+  border-radius: 18px;
+  color: black;
+  align-self: flex-start;
+  float: right;
+  background-color: #FABD3A;
+}
+.speaker_icon {
+  font-size: 20px;
+  display: inline;
+}
+.table {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  border: 2px solid #4F7849;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   background-color: #EEEEEE;
   width: 100%;
   text-align: left;
@@ -72,6 +100,7 @@
   background: -webkit-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
   background: linear-gradient(to bottom, #7b9a76 0%, #60855b 66%, #4F7849 100%);
   border-top: 1px solid #444444;
+<<<<<<< HEAD
 
 }
 .table.comicGreen tfoot td {
@@ -158,4 +187,9 @@ https://codepen.io/nzbin/pen/GGrXbp
   100% {
     background-color: #ebe6ff;
   }
+=======
+}
+.table.comicGreen tfoot td {
+  font-size: 21px;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 }

@@ -1,6 +1,12 @@
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
 import {createContextProvider} from '../lib/create-context-provider';
 import {IAnnotationPosition, IOntology, ISinglePack} from '../lib/interfaces';
 import {attributeId} from '../lib/utils';
+=======
+import { createContextProvider } from '../lib/create-context-provider';
+import { IAnnotationPosition, IOntology, ISinglePack } from '../lib/interfaces';
+import { attributeId } from '../lib/utils';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
 
 export type Dispatch = (action: Action) => void;
 
@@ -266,8 +272,13 @@ export type Action =
       type: 'set-scope';
       scopeId: string | null;
     }
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
   | {type: 'prev-scope-item'}
   | {type: 'next-scope-item'};
+=======
+  | { type: 'prev-scope-item' }
+  | { type: 'next-scope-item' };
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
 
 /**
  *
@@ -285,6 +296,7 @@ function textViewerReducer(state: State, action: Action): State {
       return {
         ...state,
         ...initialSpacingState,
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
         // textPack: action.textPack,
         textPack: {
           ...action.textPack,
@@ -302,15 +314,25 @@ function textViewerReducer(state: State, action: Action): State {
             };
           }),
         },
+=======
+        textPack: action.textPack,
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
 
         // // TODO: remove the following test code
         selectedLegendIds: state.textPack
           ? state.selectedLegendIds
           : [
               // 'forte.data.ontology.base_ontology.Sentence',
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
               // 'forte.data.ontology.ontonotes_ontology.PredicateMention',
               // 'forte.data.ontology.base_ontology.PredicateArgument',
               // 'forte.data.ontology.base_ontology.PredicateLink',
+=======
+              'forte.data.ontology.ontonotes_ontology.PredicateMention',
+              'forte.data.ontology.base_ontology.PredicateArgument',
+              'forte.data.ontology.base_ontology.PredicateLink',
+
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
               // 'forte.data.ontology.base_ontology.CoreferenceGroup',
               // 'forte.data.ontology.base_ontology.Token',
               // 'forte.data.ontology.base_ontology.CoreferenceMention',
@@ -325,6 +347,7 @@ function textViewerReducer(state: State, action: Action): State {
               // ),
               // attributeId('forte.data.ontology.stanfordnlp_ontology.Foo', 'name'),
               // attributeId(action.textPack.legends.links[0].id, 'rel_type'),
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
               // attributeId(
               //   'forte.onto.base_ontology.PredicateMention',
               //   'pred_type'
@@ -333,12 +356,26 @@ function textViewerReducer(state: State, action: Action): State {
               //   'forte.onto.base_ontology.PredicateLink',
               //   'arg_type'
               // ),
+=======
+              attributeId(
+                'forte.data.ontology.ontonotes_ontology.PredicateMention',
+                'pred_type'
+              ),
+              attributeId(
+                'forte.data.ontology.base_ontology.PredicateLink',
+                'arg_type'
+              ),
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
               // attributeId('forte.data.ontology.base_ontology.Token', 'pos_tag'),
             ],
 
         // selectedAnnotationId: '5',
         // selectedGroupIds: action.textPack.groups.map(g => g.id),
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
         // collapsedLineIndexes: [],
+=======
+        // collpasedLineIndexes: [],
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
 
         // test linkEditIsCreating
         // linkEditFromEntryId:
@@ -384,7 +421,7 @@ function textViewerReducer(state: State, action: Action): State {
           ...state,
           ...initialSpacingState,
           selectedLegendIds: state.selectedLegendIds.filter(
-            id => id !== action.legendId
+            (id) => id !== action.legendId
           ),
         };
       }
@@ -398,7 +435,11 @@ function textViewerReducer(state: State, action: Action): State {
         ...state,
         ...initialSpacingState,
         selectedLegendIds: state.ontology.definitions.map(
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
           entry => entry.entryName
+=======
+          (entry) => entry.entryName
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
         ),
       };
 
@@ -437,11 +478,16 @@ function textViewerReducer(state: State, action: Action): State {
       //   }
       // }
 
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
       const halfSelectedAnnotationIds: string[] = [];
       const halfSelectedLinkIds: string[] = [];
+=======
+      let halfSelectedAnnotationIds: string[] = [];
+      let halfSelectedLinkIds: string[] = [];
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
 
       if (state.textPack) {
-        state.textPack.links.forEach(link => {
+        state.textPack.links.forEach((link) => {
           if (link.fromEntryId === action.annotationId) {
             halfSelectedLinkIds.push(link.id);
             halfSelectedAnnotationIds.push(link.toEntryId);
@@ -485,7 +531,7 @@ function textViewerReducer(state: State, action: Action): State {
       const highlightedLinkIds: string[] = [];
 
       if (state.textPack) {
-        state.textPack.links.forEach(link => {
+        state.textPack.links.forEach((link) => {
           if (link.fromEntryId === action.annotationId) {
             highlightedLinkIds.push(link.id);
             highlightedAnnotationIds.push(link.toEntryId);
@@ -523,25 +569,25 @@ function textViewerReducer(state: State, action: Action): State {
       }
 
       const annotations = state.textPack.annotations.filter(
-        ann => ann.id !== action.annotationId
+        (ann) => ann.id !== action.annotationId
       );
 
       const links = state.textPack.links.filter(
-        link =>
+        (link) =>
           link.fromEntryId !== action.annotationId &&
           link.toEntryId !== action.annotationId
       );
 
       const removedLinkIds = state.textPack.links
         .filter(
-          link =>
+          (link) =>
             link.fromEntryId === action.annotationId ||
             link.toEntryId === action.annotationId
         )
-        .map(l => l.id);
+        .map((l) => l.id);
 
-      const groups = state.textPack.groups.map(group => {
-        const filteredMemberIds = group.members.filter(id => {
+      const groups = state.textPack.groups.map((group) => {
+        const filteredMemberIds = group.members.filter((id) => {
           if (group.memberType === 'annotation') {
             return id !== action.annotationId;
           } else if (group.memberType === 'link') {
@@ -571,7 +617,7 @@ function textViewerReducer(state: State, action: Action): State {
 
     case 'select-legend-attribute': {
       const selectedLegendAttributeIds = state.selectedLegendAttributeIds.filter(
-        id => {
+        (id) => {
           return id.indexOf(action.legendId) !== 0;
         }
       );
@@ -588,7 +634,7 @@ function textViewerReducer(state: State, action: Action): State {
 
     case 'deselect-legend-attribute': {
       const selectedLegendAttributeIds = state.selectedLegendAttributeIds.filter(
-        id => {
+        (id) => {
           return id.indexOf(action.legendId) !== 0;
         }
       );
@@ -633,8 +679,13 @@ function textViewerReducer(state: State, action: Action): State {
       return {
         ...state,
         ...initialSpacingState,
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
         collapsedLineIndexes: state.collapsedLineIndexes.filter(
           i => i !== action.lineIndex
+=======
+        collpasedLineIndexes: state.collpasedLineIndexes.filter(
+          (i) => i !== action.lineIndex
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
         ),
       };
 
@@ -645,7 +696,7 @@ function textViewerReducer(state: State, action: Action): State {
 
       let halfSelectedAnnotationIds: string[] = [];
       if (state.textPack) {
-        const link = state.textPack.links.find(l => l.id === action.linkId);
+        const link = state.textPack.links.find((l) => l.id === action.linkId);
         if (link) {
           halfSelectedAnnotationIds = [link.fromEntryId, link.toEntryId];
         }
@@ -674,7 +725,7 @@ function textViewerReducer(state: State, action: Action): State {
 
       let heighligAnnotationIds = state.highlightedAnnotationIds;
       if (state.textPack) {
-        const link = state.textPack.links.find(l => l.id === action.linkId);
+        const link = state.textPack.links.find((l) => l.id === action.linkId);
         if (link) {
           heighligAnnotationIds = [link.fromEntryId, link.toEntryId];
         }
@@ -700,12 +751,18 @@ function textViewerReducer(state: State, action: Action): State {
       }
 
       const links = state.textPack.links.filter(
-        link => link.id !== action.linkId
+        (link) => link.id !== action.linkId
       );
 
-      const groups = state.textPack.groups.map(group => {
+      const groups = state.textPack.groups.map((group) => {
         if (group.memberType === 'link') {
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
           const filteredMemberIds = group.members.filter(() => !action.linkId);
+=======
+          const filteredMemberIds = group.members.filter(
+            (id) => !action.linkId
+          );
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
           return {
             ...group,
             members: filteredMemberIds,
@@ -899,7 +956,11 @@ function textViewerReducer(state: State, action: Action): State {
 
     case 'add-member-to-group': {
       const textPack = state.textPack as ISinglePack;
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
       const groups = textPack.groups.map(g => {
+=======
+      const groups = textPack.groups.map((g) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
         if (g.id === action.groupId) {
           return {
             ...g,
@@ -943,7 +1004,11 @@ function textViewerReducer(state: State, action: Action): State {
       if (!state.textPack) return state;
 
       const scopeAnnotations = state.textPack.annotations.filter(
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
         ann => ann.legendId === state.selectedScopeId
+=======
+        (ann) => ann.legendId === state.selectedScopeId
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
       );
       const prevScopeIndex =
         state.selectedScopeIndex >= scopeAnnotations.length
@@ -961,14 +1026,22 @@ function textViewerReducer(state: State, action: Action): State {
 
 let __currentState: State = initialState;
 
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
 function storeCurrentStateReducer(state: State): State {
+=======
+function storeCurrentStateReducer(state: State, action: Action): State {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
   __currentState = state;
   return state;
 }
 
 function combineReducers(...reducers: Array<typeof textViewerReducer>) {
   return (state: State, action: Action) => {
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
     reducers.forEach(reducer => {
+=======
+    reducers.forEach((reducer) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
       state = reducer(state, action);
     });
 
@@ -979,8 +1052,12 @@ function combineReducers(...reducers: Array<typeof textViewerReducer>) {
 function getState() {
   return __currentState;
 }
+<<<<<<< HEAD:src/nlpviewer/contexts/text-viewer.context.ts
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const w: any = window;
+=======
+let w: any = window;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/contexts/text-viewer.context.ts
 w.getState = getState;
 
 const [

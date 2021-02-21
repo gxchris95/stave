@@ -1,12 +1,22 @@
 import React from 'react';
+<<<<<<< HEAD:src/nlpviewer/components/LegendList.tsx
 import {Dispatch} from '../contexts/text-viewer.context';
 import {IEntryDefinition} from '../lib/interfaces';
 import {attributeId} from '../lib/utils';
+=======
+import { Dispatch } from '../contexts/text-viewer.context';
+import { IEntryDefinition } from '../lib/interfaces';
+import { attributeId } from '../lib/utils';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LegendList.tsx
 import style from '../styles/LegendList.module.css';
 
 interface LegendListProp {
   title: string;
+<<<<<<< HEAD:src/nlpviewer/components/LegendList.tsx
   legends: (IEntryDefinition & {color: string})[];
+=======
+  legends: (IEntryDefinition & { color: string })[];
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LegendList.tsx
   selectedLegendIds: string[];
   selectedLegendAttributeIds: string[];
   dispatch: Dispatch;

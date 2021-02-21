@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'guardian',
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 ]
 
 MIDDLEWARE = [
@@ -50,11 +53,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+<<<<<<< HEAD
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', # default
     'guardian.backends.ObjectPermissionBackend',
 )
 
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 ROOT_URLCONF = 'nlpviewer_backend.urls'
 
 TEMPLATES = [

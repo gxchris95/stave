@@ -23,7 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode/settings.json
+<<<<<<< HEAD
 .vscode/
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 *.pyc
 venv
 simple-backend/db.sqlite3
@@ -33,7 +36,10 @@ simple-backend/db-example-old.sqlite3
 simple-backend/db-old.sqlite3
 .python-version*
 /.idea/
+<<<<<<< HEAD
 
 .eslintcache
 stave.iml
 package-lock.json
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486

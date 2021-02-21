@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
 import style from './Group.module.css';
 import {IGroup, ISinglePack} from '../../nlpviewer';
+=======
+import React, { useState } from 'react';
+import { State } from '../../nlpviewer';
+import style from './Group.module.css';
+import { IGroup, ISinglePack } from '../../nlpviewer';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 import {PluginComponentProp} from '../lib/interface';
 
 function Group(props: PluginComponentProp) {
@@ -11,8 +18,13 @@ function Group(props: PluginComponentProp) {
   }
 
   const dispatch = props.dispatch;
+<<<<<<< HEAD
   const {textPack} = props.appState;
   const {groups} = textPack;
+=======
+  const { textPack } = props.appState;
+  const { groups } = textPack;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
   return (
     <div key={'plugin-group'} className={style.group_name_container}>
@@ -84,10 +96,14 @@ function getMemberDetail(group: IGroup, member: string, textPack: ISinglePack) {
   if (group.memberType === 'annotation') {
     const annotation = textPack.annotations.find(ann => ann.id === member);
     if (annotation) {
+<<<<<<< HEAD
       return textPack.text.substring(
         annotation.span.begin,
         annotation.span.end
       );
+=======
+      return textPack.text.substring(annotation.span.begin, annotation.span.end);
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     } else {
       return '';
     }
@@ -96,7 +112,11 @@ function getMemberDetail(group: IGroup, member: string, textPack: ISinglePack) {
   }
 }
 
+<<<<<<< HEAD
 function enabled() {
+=======
+function enabled(state: State) {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   return true;
 }
 

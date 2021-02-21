@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, {useEffect} from 'react';
 import TextViewer, {OnEventType} from './components/TextViewer';
+=======
+import React, { useEffect } from 'react';
+import TextViewer, { OnEventType } from './components/TextViewer';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 import {
   TextViewerProvider,
   useTextViewerDispatch,
@@ -8,12 +13,16 @@ import {
 import './lib/log';
 import './styles/normalize.css';
 import './styles/global.css';
+<<<<<<< HEAD
 import {
   ISinglePack,
   IOntology,
   IPlugin,
   IProjectConfigs,
 } from './lib/interfaces';
+=======
+import { ISinglePack, IOntology, IPlugin, ILayout } from './lib/interfaces';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
 export * from './lib/transform';
 export * from './lib/interfaces';
@@ -23,7 +32,11 @@ export interface NLPViewerProp {
   textPack: ISinglePack;
   ontology: IOntology;
   plugins: IPlugin[];
+<<<<<<< HEAD
   projectConfig: IProjectConfigs;
+=======
+  layout: ILayout;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   onEvent?: OnEventType;
 }
 
@@ -50,6 +63,7 @@ function TextViewerFetchContainer(props: NLPViewerProp) {
     });
   }, [dispatch, props.textPack, props.ontology]);
 
+<<<<<<< HEAD
   return (
     <TextViewer
       plugins={props.plugins}
@@ -57,4 +71,7 @@ function TextViewerFetchContainer(props: NLPViewerProp) {
       projectConfig={props.projectConfig}
     />
   );
+=======
+  return <TextViewer plugins={props.plugins} onEvent={props.onEvent} layout={props.layout}/>;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 }

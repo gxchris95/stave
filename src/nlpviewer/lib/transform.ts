@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ISinglePack,
@@ -7,6 +8,10 @@ import {
   IProjectConfigs,
 } from './interfaces';
 import {isEntryAnnotation, isEntryLink, camelCaseDeep} from './utils';
+=======
+import { ISinglePack, IOntology, IAnnotation, ILink } from './interfaces';
+import { isEntryAnnotation, isEntryLink } from './utils';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
 export function transformPack(
   rawPack: string,
@@ -70,11 +75,15 @@ export function transformPack(
     annotations: formatedAnnotations,
     links: links,
     groups: groups,
+<<<<<<< HEAD
     attributes:
       // Backward compatibility with Forte formats.
       'meta' in packData
         ? packData.meta['py/state']
         : packData._meta['py/state'],
+=======
+    attributes: packData.meta['py/state'],
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   };
 
   return [pack, configTransformed] as any;
@@ -84,6 +93,34 @@ function getLegendName(a: any) {
   return a['py/object'];
 }
 
+<<<<<<< HEAD
+=======
+function camelCaseDeep(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(camelCaseDeep);
+  } else if (typeof obj === 'object') {
+    const camelCaseObj: any = {};
+    Object.keys(obj).forEach(key => {
+      let camelKey = key.replace(/_\w/g, function(match, offset, string) {
+        if (offset === 0) {
+          return match;
+        } else {
+          return match[1].toUpperCase();
+        }
+      });
+
+      if (camelKey === 'parentEntry') {
+        camelKey = 'parentEntryName';
+      }
+      camelCaseObj[camelKey] = camelCaseDeep(obj[key]);
+    });
+    return camelCaseObj;
+  } else {
+    return obj;
+  }
+}
+
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 function getAttrs(config: any, a: any) {
   const legendName = getLegendName(a);
 
@@ -147,6 +184,7 @@ export function transformBackLink(link: ILink): any {
     },
   };
 }
+<<<<<<< HEAD
 
 export function transformProjectConfig(rawConfig: string): IProjectConfigs {
   const config = JSON.parse(rawConfig);
@@ -156,3 +194,5 @@ export function transformProjectConfig(rawConfig: string): IProjectConfigs {
     layoutConfigs: config ? config.layoutConfigs : {},
   };
 }
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486

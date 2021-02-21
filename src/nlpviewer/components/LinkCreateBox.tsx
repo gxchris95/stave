@@ -12,8 +12,13 @@ import {
   IAnnotation,
   IConstraint,
 } from '../lib/interfaces';
+<<<<<<< HEAD:src/nlpviewer/components/LinkCreateBox.tsx
 import {shortId, isEntryLink} from '../lib/utils';
 import {OnEventType} from './TextViewer';
+=======
+import { shortId, isEntryLink } from '../lib/utils';
+import { OnEventType } from './TextViewer';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LinkCreateBox.tsx
 
 export interface LinkCreateBoxProp {
   fromEntryId: string | null;
@@ -169,7 +174,14 @@ export default function LinkCreateBox({
           <div className={style.legend_attributes}>
             {(selectedLegendDefinition.attributes || []).map(attr => {
               return (
+<<<<<<< HEAD:src/nlpviewer/components/LinkCreateBox.tsx
                 <div className={style.legend_attribute_item} key={attr.name}>
+=======
+                <div
+                  className={style.legend_attribute_item}
+                  key={attr.name}
+                >
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LinkCreateBox.tsx
                   <div className={style.legend_attribute_item_title}>
                     {attr.name}
                   </div>
@@ -204,7 +216,11 @@ export default function LinkCreateBox({
         <button
           onClick={() => {
             if (onEvent) {
+<<<<<<< HEAD:src/nlpviewer/components/LinkCreateBox.tsx
               const state = getState();
+=======
+              let state = getState();
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LinkCreateBox.tsx
 
               onEvent({
                 type: 'link-add', // TODO: add strick type for event

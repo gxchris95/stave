@@ -55,7 +55,11 @@ export function spaceOutText(
 
   textNodeEl.id = 'text-spacer';
   textNodeEl.style.width = `calc(100% - ${otherWidth}px)`;
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
   textNodeEl.style.minWidth = '350px';
+=======
+  textNodeEl.style.minWidth = `350px`;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
   textNodeEl.style.margin = '50px auto';
   textNodeEl.style.whiteSpace = 'pre-wrap';
   textNodeEl.style.lineHeight = '20px';
@@ -88,11 +92,19 @@ export function spaceOutText(
 
   // add invisibleAnnotations for each words,
   // so that long annotation can be broken down
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
   const invisibleAnnotations: any[] = [];
   let currPosition = -1;
   text.split(/\s/).forEach((text, i) => {
     invisibleAnnotations.push({
       span: {begin: currPosition + 1, end: currPosition + 1 + text.length},
+=======
+  let invisibleAnnotations: any[] = [];
+  let currPosition = -1;
+  text.split(/\s/).forEach((text, i) => {
+    invisibleAnnotations.push({
+      span: { begin: currPosition + 1, end: currPosition + 1 + text.length },
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
       id: 'i-' + i,
       legendId: 'invisible',
       attributes: {},
@@ -102,7 +114,11 @@ export function spaceOutText(
 
   annotations = annotations.concat(invisibleAnnotations);
 
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
   const annotationsPos = annotations.map(anno => {
+=======
+  const annotationsPos = annotations.map((anno) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
     const range = document.createRange();
 
     range.setStart(textNode, anno.span.begin);
@@ -110,7 +126,7 @@ export function spaceOutText(
     const rects = Array.from(range.getClientRects() as DOMRectList);
 
     return {
-      rects: rects.map(rect => ({
+      rects: rects.map((rect) => ({
         x: rect.x - textAreaRect.left,
         y: rect.y - textAreaRect.top,
         width: rect.width,
@@ -123,13 +139,21 @@ export function spaceOutText(
     annotationsPos,
     annotations
   ).filter(
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
     ann =>
+=======
+    (ann) =>
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
       ann.annotation.legendId === 'invisible' ||
       selectedLegendIds.indexOf(ann.annotation.legendId) > -1
   );
 
   const linksWithPos = mergeLinkWithPosition(links, annotationsWithPos).filter(
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
     link => selectedLegendIds.indexOf(link.link.legendId) > -1
+=======
+    (link) => selectedLegendIds.indexOf(link.link.legendId) > -1
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
   );
 
   const spaceMap: ISpaceMap = calculateSpaceMap(
@@ -139,8 +163,13 @@ export function spaceOutText(
   );
 
   const [
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
     calculatedSpacedTextWithEmptySpace,
     calculatedSpacedAnnotationSpanWithEmptySpace,
+=======
+    caculcatedSpacedTextWithEmptySpace,
+    caculcatedSpacedAnnotationSpanWithEmptySpace,
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
   ] = calculateNewText(annotations, text, spaceMap, ' ');
 
   textNodeEl.textContent = calculatedSpacedTextWithEmptySpace;
@@ -149,7 +178,7 @@ export function spaceOutText(
   const textNodeWithEmptySpace =
     textNodeEl && (textNodeEl.childNodes[0] as HTMLElement);
 
-  const annotationsPosWithEmptySpaces = annotations.map(anno => {
+  const annotationsPosWithEmptySpaces = annotations.map((anno) => {
     const range = document.createRange();
 
     range.setStart(
@@ -163,7 +192,7 @@ export function spaceOutText(
     const rects = Array.from(range.getClientRects() as DOMRectList);
 
     return {
-      rects: rects.map(rect => ({
+      rects: rects.map((rect) => ({
         x: rect.x - textAreaRectWithEmptySpace.left,
         y: rect.y - textAreaRectWithEmptySpace.top,
         width: rect.width,
@@ -176,7 +205,11 @@ export function spaceOutText(
     annotationsPosWithEmptySpaces,
     annotations
   ).filter(
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
     ann =>
+=======
+    (ann) =>
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
       ann.annotation.legendId === 'invisible' ||
       selectedLegendIds.indexOf(ann.annotation.legendId) > -1
   );
@@ -184,7 +217,7 @@ export function spaceOutText(
   const linksWithPosWithEmptySpaces = mergeLinkWithPosition(
     links,
     annotationsWithPosWithEmptySpaces
-  ).filter(link => selectedLegendIds.indexOf(link.link.legendId) > -1);
+  ).filter((link) => selectedLegendIds.indexOf(link.link.legendId) > -1);
 
   const lineStartXWithEmptySpace = 0; //textAreaDimensionWithEmptySpace.x;
   const lineWidthWithEmptySpace = textAreaDimensionWithEmptySpace.width;
@@ -207,9 +240,15 @@ export function spaceOutText(
       +lineHeight
     );
 
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
     const firstAnnotation = annotationsAtCurrLine[0];
     const fullOfInvisible = annotationsAtCurrLine.every(
       ann => ann.annotation.legendId === 'invisible'
+=======
+    let firstAnnotation = annotationsAtCurrLine[0];
+    let fullOfInvisible = annotationsAtCurrLine.every(
+      (ann) => ann.annotation.legendId === 'invisible'
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
     );
 
     spaceMapWithNewline[firstAnnotation.annotation.id] = {
@@ -231,13 +270,22 @@ export function spaceOutText(
       },
       spaceToMove: fullOfInvisible
         ? 0
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
         : calculateLinesToInsertByLevelNum(collapsedLinesIndex, i, levelNum),
+=======
+        : calcuateLinesToInsertByLevelNum(collpasedLinesIndex, i, levelNum),
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
     };
   });
 
   const updatedTextPackWithNewline = {
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
     text: calculatedSpacedTextWithEmptySpace,
     annotations: annotations.map(ann => {
+=======
+    text: caculcatedSpacedTextWithEmptySpace,
+    annotations: annotations.map((ann) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
       return {
         ...ann,
         span: {
@@ -264,8 +312,13 @@ export function spaceOutText(
   const lineWidthWithNewLine = textAreaRectWithNewLine.width;
 
   const annotationPositionsWithNewLine = annotations
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
     .filter(a => a.legendId !== 'invisible')
     .map(anno => {
+=======
+    .filter((a) => a.legendId !== 'invisible')
+    .map((anno) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
       const range = document.createRange();
 
       range.setStart(textNodeWithNewline, annotationSpanMap[anno.id].begin);
@@ -274,11 +327,19 @@ export function spaceOutText(
       let rects = Array.from(range.getClientRects() as DOMRectList);
 
       if (rects.length > 1) {
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
         rects = rects.filter(rect => rect.width > 5);
       }
 
       return {
         rects: rects.map(rect => ({
+=======
+        rects = rects.filter((rect) => rect.width > 5);
+      }
+
+      return {
+        rects: rects.map((rect) => ({
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
           x: rect.x - textAreaRectWithNewLine.left,
           y: rect.y - textAreaRectWithNewLine.top,
           width: rect.width,
@@ -288,15 +349,25 @@ export function spaceOutText(
     });
 
   const charMoveMap = new Map<number, number>();
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
   Object.keys(spaceMap).forEach(annId => {
     const annotation = annotations.find(ann => ann.id === annId);
+=======
+  Object.keys(spaceMap).forEach((annId) => {
+    const annotation = annotations.find((ann) => ann.id === annId);
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
     if (annotation) {
       charMoveMap.set(annotation.span.end, spaceMap[annId].spaceToMove);
     }
   });
 
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
   Object.keys(spaceMapWithNewline).forEach(annId => {
     const annotation = annotations.find(ann => ann.id === annId);
+=======
+  Object.keys(spaceMapWithNewline).forEach((annId) => {
+    const annotation = annotations.find((ann) => ann.id === annId);
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
     if (annotation) {
       charMoveMap.set(
         annotation.span.begin - 1,
@@ -350,12 +421,12 @@ export function mergeLinkWithPosition(
   }[]
 ) {
   return links
-    .map(link => {
+    .map((link) => {
       const fromEntryWithPosition = annotationWithPosition.find(
-        ann => ann.annotation.id === link.fromEntryId
+        (ann) => ann.annotation.id === link.fromEntryId
       );
       const toEntryWithPosition = annotationWithPosition.find(
-        ann => ann.annotation.id === link.toEntryId
+        (ann) => ann.annotation.id === link.toEntryId
       );
       if (fromEntryWithPosition && toEntryWithPosition) {
         const fromEntryX = fromEntryWithPosition.position.rects[0].x;
@@ -400,8 +471,8 @@ function calculateNewText(
 ) {
   const textSplit = text.split('');
   const sortedSpaceMap = Object.keys(spaceMap)
-    .filter(annId => spaceMap[annId].spaceToMove > 0)
-    .map(annId => spaceMap[annId])
+    .filter((annId) => spaceMap[annId].spaceToMove > 0)
+    .map((annId) => spaceMap[annId])
     .sort((annA, annB) => {
       return (
         annA.annotationWithPos.annotation.span.end -
@@ -413,7 +484,11 @@ function calculateNewText(
     [key: string]: {begin: number; end: number};
   } = {};
 
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
   annotations.forEach(ann => {
+=======
+  annotations.forEach((ann) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
     spacedAnnotationSpan[ann.id] = {
       begin: ann.span.begin,
       end: ann.span.end,
@@ -435,7 +510,7 @@ function calculateNewText(
       const begin =
         spacedAnnotationSpan[space.annotationWithPos.annotation.id].begin;
 
-      Object.keys(spacedAnnotationSpan).forEach(annId => {
+      Object.keys(spacedAnnotationSpan).forEach((annId) => {
         if (spacedAnnotationSpan[annId].begin >= begin) {
           spacedAnnotationSpan[annId].begin =
             spacedAnnotationSpan[annId].begin + space.spaceToMove;
@@ -461,7 +536,7 @@ function calculateNewText(
       const end =
         spacedAnnotationSpan[space.annotationWithPos.annotation.id].end;
 
-      Object.keys(spacedAnnotationSpan).forEach(annId => {
+      Object.keys(spacedAnnotationSpan).forEach((annId) => {
         if (spacedAnnotationSpan[annId].begin >= end) {
           spacedAnnotationSpan[annId].begin =
             spacedAnnotationSpan[annId].begin + space.spaceToMove;
@@ -508,7 +583,7 @@ function calculateLinesLevels(
   lineWidth: number
 ): Record<string, ILinkWithPos[][]> {
   const lineMap: any = {};
-  linksWithPos.forEach(link => {
+  linksWithPos.forEach((link) => {
     if (link.fromLinkY === link.toLinkY) {
       lineMap[link.fromLinkY] = lineMap[link.fromLinkY] || [];
       lineMap[link.fromLinkY].push(link);
@@ -530,7 +605,7 @@ function calculateLinesLevels(
     }
   });
 
-  Object.keys(lineMap).forEach(key => {
+  Object.keys(lineMap).forEach((key) => {
     lineMap[key] = calculateLevelForSingleLine(lineMap[key]);
   });
 
@@ -552,7 +627,7 @@ function calculateLinesLevels(
     links: ILinkWithPos[]
   ): ILinkWithPos[][] {
     const levels: ILinkWithPos[][] = [];
-    links.forEach(link => {
+    links.forEach((link) => {
       let insertLevel = -1;
       let pushLevel = -1;
       for (let i = 0; i < levels.length; i++) {
@@ -586,7 +661,7 @@ function calculateLinesLevels(
     });
 
     pushDownLinksInLevels(levels);
-    return levels.filter(l => l.length);
+    return levels.filter((l) => l.length);
   }
 
   // go through each level from bottom to top
@@ -613,7 +688,11 @@ function calculateLinesLevels(
       }
 
       levels[i] = level.filter(
+<<<<<<< HEAD:src/nlpviewer/lib/text-spacer.ts
         (_, i) => linksToPush.map(l => l[0]).indexOf(i) === -1
+=======
+        (_, i) => linkstoPush.map((l) => l[0]).indexOf(i) === -1
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/text-spacer.ts
       );
       linksToPush.forEach(([linkIndex, levelIndex]) => {
         levels[levelIndex].push(level[linkIndex]);
@@ -703,9 +782,9 @@ export function calculateLinkHeight(
 ) {
   const linksHeightMap: Record<string, Record<string, number>> = {};
 
-  Object.keys(linkLevels).forEach(y => {
+  Object.keys(linkLevels).forEach((y) => {
     linkLevels[y].forEach((links, i, arr) => {
-      links.forEach(link => {
+      links.forEach((link) => {
         linksHeightMap[link.link.id] = linksHeightMap[link.link.id] || {};
         linksHeightMap[link.link.id][y] = (arr.length - 1 - i) * gap;
       });
@@ -848,16 +927,16 @@ function calculateSpaceMap(
 ) {
   const spaceMap: ISpaceMap = {};
 
-  linksWithPos.forEach(linkPos => {
+  linksWithPos.forEach((linkPos) => {
     const label = Object.keys(linkPos.link.attributes)
-      .filter(attrKey => {
+      .filter((attrKey) => {
         return (
           selectedLegendAttributeIds.indexOf(
             attributeId(linkPos.link.legendId, attrKey)
           ) > -1
         );
       })
-      .map(attrKey => linkPos.link.attributes[attrKey])
+      .map((attrKey) => linkPos.link.attributes[attrKey])
       .join(',');
 
     const pixelNeedForLinkLabel = getTextWidth(label, fontWidth);
@@ -908,7 +987,7 @@ function getLevelsFromJustAnnotations(
 ): Record<string, ILinkWithPos[][]> {
   const levels: any = {};
   const set = new Set(
-    annotationWithPosition.map(ann => ann.position.rects[0].y)
+    annotationWithPosition.map((ann) => ann.position.rects[0].y)
   );
   for (const height of Array.from(set)) {
     levels[height] = [];
@@ -955,14 +1034,15 @@ function getAnnotationsByLine(
   lineHeight: number
 ) {
   return annotationWithPosition
-    .filter(ann => ann.position.rects[0].y === lineHeight)
+    .filter((ann) => ann.position.rects[0].y === lineHeight)
     .sort((annA, annB) => {
       return annA.position.rects[0].x - annB.position.rects[0].x;
     });
 }
 
 function getTextWidth(text: string, fontWidth: number) {
-  const textUpperLen = text.split('').filter(c => c === c.toUpperCase()).length;
+  const textUpperLen = text.split('').filter((c) => c === c.toUpperCase())
+    .length;
   const textOtherLen = text.length - textUpperLen;
   const padding = fontWidth * 2;
 

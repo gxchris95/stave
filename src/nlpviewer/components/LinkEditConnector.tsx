@@ -1,6 +1,12 @@
+<<<<<<< HEAD:src/nlpviewer/components/LinkEditConnector.tsx
 import React, {useState, useEffect, memo} from 'react';
 import {IAnnotationPosition} from '../lib/interfaces';
 import {useTextViewerDispatch} from '../contexts/text-viewer.context';
+=======
+import React, { useState, useEffect, memo } from 'react';
+import { IAnnotationPosition } from '../lib/interfaces';
+import { useTextViewerDispatch } from '../contexts/text-viewer.context';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LinkEditConnector.tsx
 import LineWithArrow from './LineWithArrow';
 
 export interface LinkEditConnectorProp {
@@ -26,7 +32,11 @@ function LinkEditConnector({
     function updatePos(e: MouseEvent) {
       moved = true;
       requestAnimationFrame(() => {
+<<<<<<< HEAD:src/nlpviewer/components/LinkEditConnector.tsx
         setPos({x: e.clientX, y: e.clientY});
+=======
+        setPos({ x: e.clientX, y: e.clientY });
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LinkEditConnector.tsx
       });
     }
 
@@ -46,8 +56,13 @@ function LinkEditConnector({
   const isMoved = pos.x !== 0 || pos.y !== 0;
   if (!isMoved) return null;
 
+<<<<<<< HEAD:src/nlpviewer/components/LinkEditConnector.tsx
   const x = position.rects[0].x + position.rects[0].width;
   const y = position.rects[0].y;
+=======
+  let x = position.rects[0].x + position.rects[0].width;
+  let y = position.rects[0].y;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LinkEditConnector.tsx
 
   const fromPos = {
     x,

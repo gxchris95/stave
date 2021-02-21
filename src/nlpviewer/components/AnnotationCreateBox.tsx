@@ -12,9 +12,15 @@ import {
   ISelectOption,
   IEntryAttributeDefinition,
 } from '../lib/interfaces';
+<<<<<<< HEAD:src/nlpviewer/components/AnnotationCreateBox.tsx
 import {shortId, isEntryAnnotation} from '../lib/utils';
 import {OnEventType} from './TextViewer';
 import {restorePos} from '../lib/text-spacer';
+=======
+import { shortId, isEntryAnnotation } from '../lib/utils';
+import { OnEventType } from './TextViewer';
+import { restorePos } from '../lib/text-spacer';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/AnnotationCreateBox.tsx
 
 export interface AnnotationCreateBoxProp {
   cursorBegin: number | null;
@@ -99,7 +105,14 @@ export default function AnnotationCreateBox({
       <div className={style.legend_attributes}>
         {(selectedLegendDefinition.attributes || []).map(attr => {
           return (
+<<<<<<< HEAD:src/nlpviewer/components/AnnotationCreateBox.tsx
             <div className={style.legend_attribute_item} key={attr.name}>
+=======
+            <div
+              className={style.legend_attribute_item}
+              key={attr.name}
+            >
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/AnnotationCreateBox.tsx
               <div className={style.legend_attribute_item_title}>
                 {attr.name}
               </div>
@@ -217,7 +230,11 @@ export default function AnnotationCreateBox({
         <button
           onClick={() => {
             if (onEvent) {
+<<<<<<< HEAD:src/nlpviewer/components/AnnotationCreateBox.tsx
               const state = getState();
+=======
+              let state = getState();
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/AnnotationCreateBox.tsx
 
               if (
                 state.annoEditCursorBegin === null ||

@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD:src/nlpviewer/components/TextDetail.tsx
 import {IEntryDefinition, IAttributes} from '../lib/interfaces';
+=======
+import { IEntryDefinition, IAttributes, IOntology } from '../lib/interfaces';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextDetail.tsx
 import {
   useTextViewerState,
   useTextViewerDispatch,
@@ -10,14 +14,24 @@ import LegendList from './LegendList';
 
 export interface TextDetailProp {
   attributes: IAttributes;
+<<<<<<< HEAD:src/nlpviewer/components/TextDetail.tsx
   annotationLegends: (IEntryDefinition & {color: string})[];
   linkLegends: (IEntryDefinition & {color: string})[];
+=======
+  annotationLegends: (IEntryDefinition & { color: string })[];
+  linkLegends: (IEntryDefinition & { color: string })[];
+  ontology: IOntology;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextDetail.tsx
 }
 
 export default function TextDetail({
   attributes,
   annotationLegends,
   linkLegends,
+<<<<<<< HEAD:src/nlpviewer/components/TextDetail.tsx
+=======
+  ontology,
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextDetail.tsx
 }: TextDetailProp) {
   const {selectedLegendIds, selectedLegendAttributeIds} = useTextViewerState();
 

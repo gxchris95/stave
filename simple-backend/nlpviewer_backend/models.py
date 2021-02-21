@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 from django.contrib.auth.models import User
 
 class Project(models.Model):
@@ -34,6 +35,15 @@ class Project(models.Model):
     
     def __str__(self):
         return self.name
+=======
+
+class Project(models.Model):
+    # project: name, ontology
+    # realtionship: Project.document
+
+    name = models.CharField(max_length=200)
+    ontology = models.TextField(default='')
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
 class Document(models.Model):
     # content: textPack: text body + annotation
@@ -52,6 +62,7 @@ class Document(models.Model):
 
     textPack = models.TextField()
 
+<<<<<<< HEAD
 class CrossDoc(models.Model):
 
     name = models.CharField(max_length=200)
@@ -67,3 +78,8 @@ class CrossDoc(models.Model):
     )
     textPack = models.TextField()
 
+=======
+class User(models.Model):
+    name = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486

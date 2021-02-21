@@ -2,9 +2,15 @@ import React from 'react';
 import {IAnnotation} from '../lib/interfaces';
 import Attributes from './Attributes';
 import style from '../styles/AnnotationDetail.module.css';
+<<<<<<< HEAD:src/nlpviewer/components/AnnotationDetail.tsx
 import {useTextViewerDispatch} from '../contexts/text-viewer.context';
 import {shortId} from '../lib/utils';
 import {OnEventType} from './TextViewer';
+=======
+import { useTextViewerDispatch } from '../contexts/text-viewer.context';
+import { shortId } from '../lib/utils';
+import { OnEventType } from './TextViewer';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/AnnotationDetail.tsx
 
 export interface AnnotationDetailProp {
   annotation: IAnnotation;

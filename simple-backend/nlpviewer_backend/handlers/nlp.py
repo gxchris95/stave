@@ -2,7 +2,10 @@ import uuid
 import json
 import os
 import logging
+<<<<<<< HEAD
 import traceback
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
 from django.contrib import admin
 from django.urls import include, path
@@ -13,7 +16,11 @@ from django.http import Http404
 from ..models import Document, User
 from ..lib.require_login import require_login
 
+<<<<<<< HEAD
 forte_msg = "Forte is not installed or imported successfully. To get NLP support from Forte, install it from https://github.com/asyml/forte"
+=======
+forte_msg = "Forte is not installed. To get NLP support from Forte, install it from https://github.com/asyml/forte"
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 forte_installed = False
 
 try:
@@ -21,11 +28,15 @@ try:
   from forte.pipeline import Pipeline
   forte_installed = True
 except ImportError:
+<<<<<<< HEAD
   traceback.print_exc()
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   logging.warning(forte_msg)
 
 nlp_models = {}
 
+<<<<<<< HEAD
 def __load_eliza():
   if forte_installed:
     from forte.processors.eliza_processor import ElizaProcessor
@@ -87,6 +98,12 @@ def __load_content_rewriter():
         "https://github.com/asyml/forte/tree/master/forte_examples "
         "needed to be installed to run this example.")
       return None
+=======
+def __load_content_rewriter():
+  if forte_installed:
+    from examples.content_rewriter.rewriter import ContentRewriter
+    from forte.data.readers import RawDataDeserializeReader
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
     model_path = os.environ.get('content_rewriter_model_path')
     if not model_path:
@@ -109,6 +126,7 @@ def __load_content_rewriter():
       return pipeline
   else:
     logging.info(forte_msg)
+<<<<<<< HEAD
     return None
 
 
@@ -131,6 +149,30 @@ def load_model(request, model_name: str):
   else:
     logging.error(f"Cannot find model {model_name}")
     response =  Http404(f"Cannot find model {model_name}")    
+=======
+    logging.info("Cannot load content rewriter models.")
+    return None
+
+@require_login
+def load_model(request, model_name: str):
+  response: HttpResponse
+  if model_name == 'content_rewriter':
+    if model_name in nlp_models:
+      response = HttpResponse('OK')
+      response['load_success'] = True
+    else:
+      m = __load_content_rewriter()
+      if m:
+        nlp_models[model_name]
+        response = HttpResponse('OK')
+        response['load_success'] = True
+      else:
+        response = HttpResponse('OK')
+        response['load_success'] = False
+  else:
+    response =  Http404(f"Cannot find model {model_name}")
+  
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   return response
 
 
@@ -138,12 +180,22 @@ def load_model(request, model_name: str):
 def run_pipeline(request, document_id, model_name):
   doc = Document.objects.get(pk=document_id)
   docJson = model_to_dict(doc)
+<<<<<<< HEAD
   if model_name not in nlp_models:
     logging.error(
       f"Model {model_name} is not loaded at "
       "the time of running this pipeline.")
   pipeline = nlp_models.get(model_name, None)
   pack = json.loads(docJson['textPack'])['py/state']
+=======
+
+  pipeline = nlp_models.get(model_name, None)
+
+  print('print the doc')
+  pack = json.loads(docJson['textPack'])['py/state']
+  print(pack['_text'])
+  print(pack['annotations'])
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
   response: JsonResponse
   if pipeline:
@@ -157,4 +209,8 @@ def run_pipeline(request, document_id, model_name):
       f"loaded, please check the log for possible reasons."
     )
     response = JsonResponse(docJson, safe=False)
+<<<<<<< HEAD
+=======
+  # TODO: How to tell the front-end that pipeline is not run?
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   return response

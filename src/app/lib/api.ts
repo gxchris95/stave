@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-explicit-any */
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 export interface APIDocument {
   id: string;
   textPack: string;
@@ -11,6 +14,7 @@ export interface APIDocOntology {
   ontology: string;
 }
 
+<<<<<<< HEAD
 export interface APIDocConfig {
   id: string;
   config: string;
@@ -26,6 +30,14 @@ export function fetchProjects(): Promise<any> {
 
 export function fetchProject(id: string): Promise<any> {
   return fetch(`/api/projects/${id}`).then(r => r.json());
+=======
+export function fetchDocuments(): Promise<any> {
+  return fetch(`/api/documents`).then(r => r.json());
+}
+
+export function fetchProjects(): Promise<any> {
+  return fetch(`/api/projects`).then(r => r.json());
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 }
 
 export function fetchDocument(id: string): Promise<APIDocument> {
@@ -36,10 +48,13 @@ export function fetchDocOntology(id: string): Promise<APIDocOntology> {
   return fetch(`/api/ontology_from_doc/${id}`).then(r => r.json());
 }
 
+<<<<<<< HEAD
 export function fetchDocProjectConfig(id: string): Promise<APIDocConfig> {
   return fetch(`/api/config_from_doc/${id}`).then(r => r.json());
 }
 
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 export function nextDocument(id: string): Promise<any> {
   return fetch(`/api/next_doc/${id}`).then(r => r.json());
 }
@@ -66,6 +81,7 @@ export function createDocument(
   textPack: string,
   project_id: string
 ) {
+<<<<<<< HEAD
   return postData('/api/documents/new', {
     name: name,
     textPack: textPack,
@@ -97,6 +113,22 @@ export function createProject(
     ontology: ontology,
     multiOntology: multiOntology,
     config: config,
+=======
+  return postData(`/api/documents/new`, {
+    name: name,
+    textPack: textPack,
+    project_id: project_id
+  }).then(r => r.json());
+}
+
+export function createProject(
+  name: string,
+  ontology: string
+) {
+  return postData(`/api/projects/new`, {
+    name: name,
+    ontology: ontology,
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   }).then(r => r.json());
 }
 
@@ -104,27 +136,40 @@ export function deleteDocument(id: string) {
   return postData(`/api/documents/${id}/delete`);
 }
 
+<<<<<<< HEAD
 export function deleteCrossDoc(id: string) {
   return postData(`/api/crossdocs/${id}/delete`);
 }
 
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 export function deleteProject(id: string) {
   return postData(`/api/projects/${id}/delete`);
 }
 
+<<<<<<< HEAD
 export function fetchDocumentsProject(id: string) {
   return postData(`/api/projects/${id}/docs`).then(r => r.json());
 }
 export function fetchDocumentsAndMultiPacksProject(id: string) {
   return postData(`/api/projects/${id}/crossdocs`).then(r => r.json());
 }
+=======
+export function fetchDocumentsProject(id: string){
+  return postData(`/api/projects/${id}/docs`).then(r => r.json());
+}
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
 // export function fetchOntologyByDocument(id: string):Promise<APIOntology>{
 //   return postData(`/api/doc_ontology_by_id/${id}`).then(r => r.json());
 // }
 
 export function fetchUsers() {
+<<<<<<< HEAD
   return fetch('/api/users').then(r => r.json());
+=======
+  return fetch(`/api/users`).then(r => r.json());
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 }
 
 export function fetchUser(id: string) {
@@ -143,15 +188,25 @@ export function deleteUser(id: string) {
 }
 
 export function createUser(name: string, password: string) {
+<<<<<<< HEAD
   return postData('/api/users/new', {
+=======
+  return postData(`/api/users/new`, {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     name,
     password,
   }).then(r => r.json());
 }
 
+<<<<<<< HEAD
 export function editText(documentId: string, new_text: string) {
   return postData(`/api/documents/${documentId}/text/edit`, {
     new_text,
+=======
+export function editText(documentId: string, new_text: string){
+  return postData(`/api/documents/${documentId}/text/edit`,{
+    new_text
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   });
 }
 
@@ -197,6 +252,7 @@ export function deleteLink(documentId: string, linkId: string) {
   return postData(`/api/documents/${documentId}/links/${linkId}/delete`, {});
 }
 
+<<<<<<< HEAD
 export function loadNlpModel(modelName: string) {
   return postData(`/api/nlp/load/${modelName}`, {});
 }
@@ -212,20 +268,40 @@ export function runNlp(
 
 export function login(name: string, password: string) {
   return postData('/api/login', {
+=======
+export function loadNlpModel(modelName: string){
+  return postData(`/api/nlp/load/${modelName}`, {})
+}
+
+export function runNlp(documentId: string, modelName: string): Promise<APIDocument>{
+  return postData(`/api/nlp/${documentId}/${modelName}`, {}).then(r => r.json());
+}
+
+export function login(name: string, password: string) {
+  return postData(`/api/login`, {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     name,
     password,
   });
 }
 
 export function signup(name: string, password: string) {
+<<<<<<< HEAD
   return postData('/api/signup', {
+=======
+  return postData(`/api/signup`, {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     name,
     password,
   });
 }
 
 export function logout() {
+<<<<<<< HEAD
   return fetch('/api/logout');
+=======
+  return fetch(`/api/logout`);
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 }
 
 async function postData(url = '', data = {}) {
@@ -251,6 +327,10 @@ async function postData(url = '', data = {}) {
   }
 }
 
+<<<<<<< HEAD
 const w: any = window;
+=======
+let w: any = window;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
 w.postData = postData;

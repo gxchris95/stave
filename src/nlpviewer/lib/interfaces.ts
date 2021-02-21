@@ -1,4 +1,7 @@
+<<<<<<< HEAD:src/nlpviewer/lib/interfaces.ts
 /* eslint-disable @typescript-eslint/no-explicit-any */
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/interfaces.ts
 export interface IAttributes {
   [key: string]: any;
 }
@@ -187,6 +190,7 @@ export interface IPlugin {
 }
 
 export interface ILayout {
+<<<<<<< HEAD:src/nlpviewer/lib/interfaces.ts
   [position: string]: string;
 }
 
@@ -212,4 +216,7 @@ export interface IProjectConfigs {
   legendConfigs: ILegendConfigs;
   scopeConfigs: IScopeConfigs;
   layoutConfigs: ILayout;
+=======
+  [position: string] : string;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/interfaces.ts
 }

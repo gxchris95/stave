@@ -11,7 +11,11 @@ import {colorPalettes} from './color';
 
 export function applyColorToLegend(
   legends: IEntryDefinition[]
+<<<<<<< HEAD:src/nlpviewer/lib/utils.ts
 ): (IEntryDefinition & {color: string})[] {
+=======
+): (IEntryDefinition & { color: string })[] {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/utils.ts
   return legends.map((leg, i) => {
     return {
       ...leg,
@@ -21,6 +25,7 @@ export function applyColorToLegend(
 }
 
 export function displayAttributeInline(attr_value: any) {
+<<<<<<< HEAD:src/nlpviewer/lib/utils.ts
   const attr_type: string = typeof attr_value;
 
   // The way that we display null value and other objects will leave an empty box.
@@ -68,6 +73,55 @@ export function displayAttributeSidebar(attr_value: any) {
     return 'N/A';
   } else {
     return 'complex object';
+=======
+  const attr_type:string = (typeof attr_value)
+  
+  // The way that we display null value and other objects will leave an empty box.
+  // We can probably use the ontology to filter out some of these.
+
+  if (attr_type === 'boolean'){
+    return attr_value.toString()
+  } else if (attr_type === 'string'){
+    return attr_value.substring(0,3)
+  }else if (attr_type === 'number'){
+    return attr_value.toString()
+  }else if (attr_value === null){
+    return ''
+  }else{
+    return '-'
+  }
+}
+
+export function displayAttributeFloating(attr_value: any){
+  const attr_type:string = (typeof attr_value)
+
+  if (attr_type === 'boolean'){
+    return attr_value.toString()
+  } else if (attr_type === 'string'){
+    return attr_value.substring(0,3)
+  }else if (attr_type === 'number'){
+    return attr_value.toString()
+  }else if (attr_value === null){
+    return 'N/A'
+  }else{
+    return 'complex object'
+  }
+}
+
+export function displayAttributeSidebar(attr_value: any){
+  const attr_type:string = (typeof attr_value)
+
+  if (attr_type === 'boolean'){
+    return attr_value.toString()
+  } else if (attr_type === 'string'){
+    return attr_value.substring(0,3)
+  }else if (attr_type === 'number'){
+    return attr_value.toString()
+  }else if (attr_value === null){
+    return 'N/A'
+  }else{
+    return 'complex object'
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/utils.ts
   }
 }
 
@@ -410,7 +464,13 @@ function findEntryNameMatchDeep(
     return true;
   }
 
+<<<<<<< HEAD:src/nlpviewer/lib/utils.ts
   const entry = config.definitions.find(ent => ent.entryName === entryName);
+=======
+  const entry = config.definitions.find(
+    ent => ent.entryName === entryName
+  );
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/lib/utils.ts
 
   if (!entry) {
     return false;

@@ -1,7 +1,14 @@
+<<<<<<< HEAD:src/nlpviewer/components/LinkMultiLine.tsx
 import React, {memo} from 'react';
 import {ILink, IAnnotation, IAnnotationPosition} from '../lib/interfaces';
 import {attributeId, shouldMultiLineGoLeft} from '../lib/utils';
 import {useTextViewerDispatch} from '../contexts/text-viewer.context';
+=======
+import React, { memo } from 'react';
+import { ILink, IAnnotation, IAnnotationPosition } from '../lib/interfaces';
+import { attributeId, shouldMultiLineGoLeft } from '../lib/utils';
+import { useTextViewerDispatch } from '../contexts/text-viewer.context';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/LinkMultiLine.tsx
 import style from '../styles/Link.module.css';
 
 export interface LinkMultiLineProp {

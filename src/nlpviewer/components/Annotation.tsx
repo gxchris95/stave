@@ -1,6 +1,12 @@
+<<<<<<< HEAD:src/nlpviewer/components/Annotation.tsx
 import React, {memo} from 'react';
 import {IAnnotation, IAnnotationPosition} from '../lib/interfaces';
 import {useTextViewerDispatch} from '../contexts/text-viewer.context';
+=======
+import React, { memo } from 'react';
+import { IAnnotation, IAnnotationPosition } from '../lib/interfaces';
+import { useTextViewerDispatch } from '../contexts/text-viewer.context';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/Annotation.tsx
 import style from '../styles/Annotation.module.css';
 
 export interface AnnotationProp {
@@ -112,11 +118,19 @@ function Annotation({
             >
               <div
                 className={`${style.annotation_inner_left}`}
+<<<<<<< HEAD:src/nlpviewer/components/Annotation.tsx
                 style={{borderRightColor: legendColor}}
               ></div>
               <div
                 className={`${style.annotation_inner_right}`}
                 style={{borderLeftColor: legendColor}}
+=======
+                style={{ borderRightColor: legendColor }}
+              ></div>
+              <div
+                className={`${style.annotation_inner_right}`}
+                style={{ borderLeftColor: legendColor }}
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/Annotation.tsx
               ></div>
             </div>
             <div

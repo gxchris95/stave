@@ -1,16 +1,28 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react';
 import {createUser, fetchUsers, deleteUser} from '../lib/api';
 import {useHistory} from 'react-router-dom';
 
 function Users() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+=======
+import React, { useState, useEffect } from 'react';
+import { createUser, fetchUsers, deleteUser } from '../lib/api';
+import { useHistory } from 'react-router-dom';
+
+function Users() {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   const [users, setUsers] = useState<any[]>([]);
   const [name, setName] = useState<string>('');
   const [pass, setPass] = useState<string>('');
   const history = useHistory();
 
   useEffect(() => {
+<<<<<<< HEAD
     updateUsers().catch(() => {
+=======
+    updateUsers().catch(e => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
       history.push('/login');
     });
   }, [history]);
@@ -44,7 +56,11 @@ function Users() {
             <li>
               {/* 'User detail is not implemented' */}
               {/* <Link to={`/documents/${d.id}`}>{d.name}</Link> {d.textPack}{' '} */}
+<<<<<<< HEAD
               <span>{d.username} </span>
+=======
+              <span>{d.name} </span>
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
               <button onClick={() => handleDelete(d.id)}>X</button>
             </li>
           </ul>

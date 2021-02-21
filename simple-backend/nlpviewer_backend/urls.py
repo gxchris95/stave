@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+<<<<<<< HEAD
 from nlpviewer_backend.handlers import session, user, document, project, nlp, crossdoc
+=======
+from nlpviewer_backend.handlers import session, user, document, project, nlp
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
 urlpatterns = [
     path('login', session.login),
@@ -46,25 +50,38 @@ urlpatterns = [
     path('documents/<int:document_id>/links/<int:link_id>/edit', document.edit_link),
     path('documents/<int:document_id>/links/<int:link_id>/delete',
          document.delete_link),
+<<<<<<< HEAD
 
     path('crossdocs/new', crossdoc.create),
     path('crossdocs/<int:crossdoc_id>/delete', crossdoc.delete),
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     
     path('next_doc/<int:document_id>', document.get_next_document_id),
     path('prev_doc/<int:document_id>', document.get_prev_document_id),
 
+<<<<<<< HEAD
     path('projects/all', project.listAll),
     path('projects', project.list_user_projects),
     path('projects/new', project.create),
     path('projects/<int:project_id>', project.query),
     path('projects/<int:project_id>/docs', project.query_docs),
     path('projects/<int:project_id>/crossdocs', project.query_crossdocs),
+=======
+    path('projects', project.listAll),
+    path('projects/new', project.create),
+    path('projects/<int:project_id>', project.query),
+    path('projects/<int:project_id>/docs', project.query_docs),
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     path('projects/<int:project_id>/delete', project.delete),
 
     path('documents/<int:document_id>/text/edit', document.edit_text),   
 
     path('ontology_from_doc/<int:document_id>', document.get_doc_ontology_pack),
+<<<<<<< HEAD
     path('config_from_doc/<int:document_id>', document.get_doc_project_config),
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
     path('nlp/load/<model_name>', nlp.load_model),
     path('nlp/<int:document_id>/<model_name>', nlp.run_pipeline),

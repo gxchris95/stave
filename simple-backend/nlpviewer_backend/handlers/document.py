@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.forms import model_to_dict
 import uuid
 import json
+<<<<<<< HEAD
 from django.contrib.auth.decorators import permission_required
 from guardian.decorators import permission_required_or_403
 from ..models import Document, User, Project
@@ -31,12 +32,21 @@ def listAll(request):
          ...
         ]
     """
+=======
+from ..models import Document, User, Project
+from ..lib.require_login import require_login
+
+
+@require_login
+def listAll(request):
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     documents = Document.objects.all().values()
     return JsonResponse(list(documents), safe=False)
 
 
 @require_login
 def create(request):
+<<<<<<< HEAD
     """Creates a new document.
     
     Creates a new document.
@@ -56,18 +66,26 @@ def create(request):
     project_id = received_json_data.get('project_id')
     project = Project.objects.get(id=project_id)
     check_perm_project(project, request.user, 'nlpviewer_backend.new_project')
+=======
+    received_json_data = json.loads(request.body)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
     doc = Document(
         name=received_json_data.get('name'),
         textPack=received_json_data.get('textPack'),
         project = Project.objects.get(
+<<<<<<< HEAD
             pk=project_id
+=======
+            pk=received_json_data.get('project_id')
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
         )
     )
     doc.save()
 
     return JsonResponse({"id": doc.id}, safe=False)
 
+<<<<<<< HEAD
 @require_login
 def edit(request, document_id):
     """Edits a document, queried by id.
@@ -87,6 +105,12 @@ def edit(request, document_id):
     """
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_text")
     
+=======
+
+@require_login
+def edit(request, document_id):
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     received_json_data = json.loads(request.body)
 
     doc.name = received_json_data.get('name')
@@ -96,7 +120,11 @@ def edit(request, document_id):
     docJson = model_to_dict(doc)
     return JsonResponse(docJson, safe=False)
 
+<<<<<<< HEAD
 # TODO - need rewrite and not called
+=======
+# need rewrite 
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 @require_login
 def edit_ontology(request, document_id):
     try:
@@ -119,6 +147,7 @@ def edit_ontology(request, document_id):
 
 @require_login
 def query(request, document_id):
+<<<<<<< HEAD
     """Retrieves a document by id.
     
     Retrieves a document by id.
@@ -138,11 +167,16 @@ def query(request, document_id):
 
     docJson = model_to_dict(
         doc)
+=======
+    docJson = model_to_dict(
+        Document.objects.get(pk=document_id))
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     return JsonResponse(docJson, safe=False)
 
 
 @require_login
 def delete(request, document_id):
+<<<<<<< HEAD
     """Deletes a document by id.
     
     Deletes a document by id.
@@ -157,6 +191,9 @@ def delete(request, document_id):
     """
     
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.remove_project")
+=======
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     doc.delete()
 
     return HttpResponse('ok')
@@ -164,6 +201,7 @@ def delete(request, document_id):
 
 @require_login
 def edit_text(request, document_id):
+<<<<<<< HEAD
     """Edits the text pack of a document, queried by id.
     
     Edits the text pack of a document, queried by id.
@@ -178,6 +216,10 @@ def edit_text(request, document_id):
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_text")
 
     data = json.loads(request.body)
+=======
+    data = json.loads(request.body)
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     
     docJson = model_to_dict(doc)
     textPackJson = json.loads(docJson['textPack'])
@@ -190,6 +232,7 @@ def edit_text(request, document_id):
 
 @require_login
 def new_annotation(request, document_id):
+<<<<<<< HEAD
     """Adds a annotation, queried by document id.
     
     Edits the text pack of a document, queried by id.
@@ -203,6 +246,9 @@ def new_annotation(request, document_id):
         example:
             {"id": 1}
     """
+=======
+
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     # get pack from db
     # generate a annotation id
     # add id to received annotation data
@@ -226,9 +272,13 @@ def new_annotation(request, document_id):
     #         "ner_type": "DATE"
     #     }
     # }
+<<<<<<< HEAD
 
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_annotation")
     
+=======
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     docJson = model_to_dict(doc)
     textPackJson = json.loads(docJson['textPack'])
 
@@ -245,6 +295,10 @@ def new_annotation(request, document_id):
 
     return JsonResponse({"id": annotation_id}, safe=False)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 @require_login
 def edit_annotation(request, document_id, annotation_id):
     received_json_data = json.loads(request.body)
@@ -256,6 +310,7 @@ def edit_annotation(request, document_id, annotation_id):
     # save to db
     # return OK
 
+<<<<<<< HEAD
     """Edits an annotation, queried by document id and annotation id.
     
     Edits an annotation, queried by document id and annotation id.
@@ -273,6 +328,10 @@ def edit_annotation(request, document_id, annotation_id):
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_annotation")
 
     received_json_data = json.loads(request.body)
+=======
+    received_json_data = json.loads(request.body)
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     annotation = received_json_data.get('data')
 
     docJson = model_to_dict(doc)
@@ -286,6 +345,7 @@ def edit_annotation(request, document_id, annotation_id):
     doc.save()
 
     return HttpResponse('OK')
+<<<<<<< HEAD
 
 @require_login
 def delete_annotation(request, document_id, annotation_id):
@@ -303,15 +363,26 @@ def delete_annotation(request, document_id, annotation_id):
     Returns:
        OK if succeeded, otherwise forbidden or not found 
     """
+=======
+    # return JsonResponse(model_to_dict(doc), safe=False)
+
+
+@require_login
+def delete_annotation(request, document_id, annotation_id):
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
     # get pack from db
     # remove annotation with id from pack
     # save to db
     # return OK
 
+<<<<<<< HEAD
     # if doc doen't exist
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_annotation")
 
+=======
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     docJson = model_to_dict(doc)
     textPackJson = json.loads(docJson['textPack'])
 
@@ -330,6 +401,7 @@ def delete_annotation(request, document_id, annotation_id):
 
 @require_login
 def new_link(request, document_id):
+<<<<<<< HEAD
     """Adds a link, query by document id.
     
     Adds a link, query by document id.
@@ -345,6 +417,8 @@ def new_link(request, document_id):
 
         {"id": 1}
     """
+=======
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
     # get pack from db
     # generate a link id
@@ -364,9 +438,14 @@ def new_link(request, document_id):
     #     }
     #   }
 
+<<<<<<< HEAD
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_annotation")
 
     received_json_data = json.loads(request.body)
+=======
+    received_json_data = json.loads(request.body)
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 
     link_id = str(uuid.uuid1())
     link = received_json_data.get('data')
@@ -383,6 +462,7 @@ def new_link(request, document_id):
 
 @require_login
 def edit_link(request, document_id, link_id):
+<<<<<<< HEAD
     """Edits a link, queried by document id and link id.
     
     Edits a link, queried by document id and link id.
@@ -400,6 +480,10 @@ def edit_link(request, document_id, link_id):
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_annotation")
 
     received_json_data = json.loads(request.body)
+=======
+    received_json_data = json.loads(request.body)
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     link = received_json_data.get('data')
 
     docJson = model_to_dict(doc)
@@ -417,6 +501,7 @@ def edit_link(request, document_id, link_id):
 
 @require_login
 def delete_link(request, document_id, link_id):
+<<<<<<< HEAD
     """Deletes a link, queried by document id and link id.
     
     Deletes a link, queried by document id and link id.
@@ -433,6 +518,10 @@ def delete_link(request, document_id, link_id):
     """
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.edit_annotation")
 
+=======
+
+    doc = Document.objects.get(pk=document_id)
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     docJson = model_to_dict(doc)
     textPackJson = json.loads(docJson['textPack'])
 
@@ -449,6 +538,7 @@ def delete_link(request, document_id, link_id):
 
 @require_login
 def get_doc_ontology_pack(request, document_id):
+<<<<<<< HEAD
     """Gets document pack + ontology by document id
     
     Deletes a link, queried by document id and link id.
@@ -490,12 +580,23 @@ def get_doc_project_config(request, document_id):
     docJson = {
         'id': document_id,
         'config': cfg
+=======
+    
+    doc = Document.objects.get(pk=document_id)
+    project = doc.project
+
+    docJson = {
+        'id': document_id,
+        'textPack': doc.textPack,
+        'ontology': project.ontology
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     }
 
     return JsonResponse(docJson, safe=False)
 
 @require_login
 def get_next_document_id(request, document_id):
+<<<<<<< HEAD
     """Gets the id of the next document, by the current document's id
     
     Gets the id of the next document, by the current document's id
@@ -517,6 +618,12 @@ def get_next_document_id(request, document_id):
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.read_project")
     docs = doc.project.documents
 
+=======
+
+    doc = Document.objects.get(pk=document_id) 
+    project = doc.project
+    docs = project.documents
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     next_doc = docs.filter(id__gt=document_id).first()
     if next_doc:
         next_id = next_doc.id
@@ -526,6 +633,7 @@ def get_next_document_id(request, document_id):
 
 @require_login
 def get_prev_document_id(request, document_id):
+<<<<<<< HEAD
     """Gets the id of the previous document, by the current document's id
     
     Gets the id of the previous document, by the current document's id
@@ -547,6 +655,12 @@ def get_prev_document_id(request, document_id):
     doc = fetch_doc_check_perm(document_id, request.user, "nlpviewer_backend.read_project")
     docs = doc.project.documents
     
+=======
+
+    doc = Document.objects.get(pk=document_id) 
+    project = doc.project
+    docs = project.documents
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     prev_doc = docs.filter(id__lt=document_id).last()
     if prev_doc:
         prev_id = prev_doc.id

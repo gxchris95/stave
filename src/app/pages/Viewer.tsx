@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useEffect, useState} from 'react';
 import NLPViewer, {
   ISinglePack,
@@ -15,10 +16,30 @@ import {useParams} from 'react-router-dom';
 import {
   fetchDocOntology,
   fetchDocProjectConfig,
+=======
+import React, { useEffect, useState } from 'react';
+import NLPViewer, {
+  ISinglePack,
+  IOntology,
+  transformPack,
+  transformBackAnnotation,
+  transformBackLink,
+} from '../../nlpviewer';
+import groupPlugin from '../../plugins/group/Group';
+import {layout} from '../layout';
+import dialoguePlugin from '../../plugins/dialogue_box/DialogueBox';
+import { useParams } from 'react-router-dom';
+import {
+  fetchDocOntology,
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
   addAnnotation,
   deleteAnnotation,
   addLink,
   deleteLink,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
 } from '../lib/api';
 
 interface WholePack {
@@ -26,6 +47,7 @@ interface WholePack {
   ontology: IOntology;
 }
 
+<<<<<<< HEAD
 interface ProjectConfig {
   config: IProjectConfigs;
 }
@@ -37,6 +59,15 @@ function Viewer() {
 
   useEffect(() => {
     if (id) {
+=======
+function Viewer() {
+  let { id } = useParams();
+  const [pack, setPack] = useState<WholePack | null>(null);
+
+  useEffect(() => {
+    if (id) {
+
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
       fetchDocOntology(id).then(data => {
         const [singlePackFromAPI, ontologyFromAPI] = transformPack(
           data.textPack,
@@ -48,6 +79,7 @@ function Viewer() {
           ontology: ontologyFromAPI,
         });
       });
+<<<<<<< HEAD
 
       fetchDocProjectConfig(id).then(data => {
         setConfig({
@@ -58,6 +90,12 @@ function Viewer() {
   }, [id]);
 
   if (!pack || !config) {
+=======
+    }
+  }, [id]);
+
+  if (!pack) {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     return <div>Loading...</div>;
   }
 
@@ -65,6 +103,7 @@ function Viewer() {
     <NLPViewer
       textPack={pack.singlePack}
       ontology={pack.ontology}
+<<<<<<< HEAD
       projectConfig={config.config}
       // plugins={[groupPlugin]}
       plugins={[groupPlugin, dialoguePlugin]}
@@ -97,6 +136,31 @@ function Viewer() {
               `Will not add annotation with span [${b}:${e}] in a document of length ${pack.singlePack.text.length}, which is considered invalid`
             );
           }
+=======
+      // plugins={[groupPlugin]}
+      plugins={[groupPlugin, dialoguePlugin]}
+      layout={layout}
+      onEvent={event => {
+        if (!id) return;
+
+        console.log(event);
+
+        if (event.type === 'annotation-add') {
+          const { type, ...annotation } = event;
+          const annotationAPIData = transformBackAnnotation(annotation);
+
+          addAnnotation(id, annotationAPIData).then(({ id }) => {
+            annotation.id = id;
+
+            setPack({
+              singlePack: {
+                ...pack.singlePack,
+                annotations: [...pack.singlePack.annotations, annotation],
+              },
+              ontology: pack.ontology,
+            });
+          });
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
         } else if (event.type === 'annotation-delete') {
           deleteAnnotation(id, event.annotationId).then(() => {
             setPack({
@@ -110,10 +174,17 @@ function Viewer() {
             });
           });
         } else if (event.type === 'link-add') {
+<<<<<<< HEAD
           const {...link} = event;
           const linkAPIData = transformBackLink(link);
 
           addLink(id, linkAPIData).then(({id}) => {
+=======
+          const { type, ...link } = event;
+          const linkAPIData = transformBackLink(link);
+
+          addLink(id, linkAPIData).then(({ id }) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
             link.id = id;
             setPack({
               singlePack: {

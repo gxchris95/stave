@@ -17,7 +17,11 @@ def listAll(request):
 def create(request):
     received_json_data = json.loads(request.body)
 
+<<<<<<< HEAD
     user = User.objects.create_user(
+=======
+    user = User(
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
         name=received_json_data.get('name'),
         password=received_json_data.get('password')
     )
@@ -29,7 +33,11 @@ def create(request):
 def signup(request):
     received_json_data = json.loads(request.body)
 
+<<<<<<< HEAD
     user = User.objects.create_user(
+=======
+    user = User(
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
         name=received_json_data.get('name'),
         password=received_json_data.get('password')
     )
@@ -45,7 +53,11 @@ def edit(request, user_id):
     received_json_data = json.loads(request.body)
 
     user.name = received_json_data.get('name')
+<<<<<<< HEAD
     user.set_password(received_json_data.get('password'))
+=======
+    user.password = received_json_data.get('password')
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486
     user.save()
 
     userJson = model_to_dict(user)

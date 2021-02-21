@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
 import React, {useRef, useEffect, useMemo} from 'react';
+=======
+import React, { useRef, useEffect, useMemo } from 'react';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
 import style from '../styles/TextArea.module.css';
 import {
   ISinglePack,
@@ -8,7 +12,11 @@ import {
   IAnnotation,
   ILink,
 } from '../lib/interfaces';
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
 import {calculateLinesLevels, calculateLinkHeight} from '../lib/utils';
+=======
+import { calcuateLinesLevels, calcuateLinkHeight } from '../lib/utils';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
 import {
   spaceOutText,
   mergeLinkWithPosition,
@@ -23,17 +31,29 @@ import {
   useTextViewerState,
   useTextViewerDispatch,
 } from '../contexts/text-viewer.context';
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
 import {debounce} from 'lodash-es';
+=======
+import { debounce } from 'lodash-es';
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
 import LineWithArrow from './LineWithArrow';
 
 export interface TextAreaProp {
   textPack: ISinglePack;
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
   annotationLegendsColored: (IEntryDefinition & {color: string})[];
 }
 
 function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
   let {annotations, text} = textPack;
   const {links} = textPack;
+=======
+  annotationLegendsColored: (IEntryDefinition & { color: string })[];
+}
+
+function TextArea({ textPack, annotationLegendsColored }: TextAreaProp) {
+  let { annotations, text, links } = textPack;
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
   const textNodeEl = useRef<HTMLDivElement>(null);
   const textAreaEl = useRef<HTMLDivElement>(null);
 
@@ -73,7 +93,11 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
 
   if (selectedScopeId !== null) {
     const scopeAnnotations = annotations.filter(
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
       ann => ann.legendId === selectedScopeId
+=======
+      (ann) => ann.legendId === selectedScopeId
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
     );
     const currScopeAnnotation = scopeAnnotations[selectedScopeIndex];
 
@@ -83,11 +107,19 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
     );
     annotations = annotations
       .filter(
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
         ann =>
           ann.span.begin >= currScopeAnnotation.span.begin &&
           ann.span.end <= currScopeAnnotation.span.end
       )
       .map(ann => {
+=======
+        (ann) =>
+          ann.span.begin >= currScopeAnnotation.span.begin &&
+          ann.span.end <= currScopeAnnotation.span.end
+      )
+      .map((ann) => {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
         const scoppedSpan = {
           begin: ann.span.begin - currScopeAnnotation.span.begin,
           end: ann.span.end - currScopeAnnotation.span.begin,
@@ -150,13 +182,21 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
       collapsedLineIndexes
     );
 
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
     if (spacingCalculated && jumpToAnnotation !== null) {
+=======
+    if (spacingCalcuated && jumpToAnnotation !== null) {
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
       const el = document.querySelector(
         `[data-annotation-id="${jumpToAnnotation}"]`
       );
 
       if (el) {
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
         el.scrollIntoView({behavior: 'smooth', block: 'center'});
+=======
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
       }
 
       dispatch({
@@ -177,19 +217,31 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
     selectedLegendAttributeIds,
     spacingCalculated,
     dispatch,
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
     collapsedLineIndexes,
+=======
+    collpasedLineIndexes,
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
     jumpToAnnotation,
   ]);
 
   const annotationsWithPosition = useMemo(() => {
     return mergeAnnotationWithPosition(annotationPositions, annotations).filter(
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
       ann => selectedLegendIds.indexOf(ann.annotation.legendId) > -1
+=======
+      (ann) => selectedLegendIds.indexOf(ann.annotation.legendId) > -1
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
     );
   }, [annotationPositions, annotations, selectedLegendIds]);
 
   const linksWithPos = useMemo(() => {
     return mergeLinkWithPosition(links, annotationsWithPosition).filter(
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
       link => selectedLegendIds.indexOf(link.link.legendId) > -1
+=======
+      (link) => selectedLegendIds.indexOf(link.link.legendId) > -1
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
     );
   }, [links, annotationsWithPosition, selectedLegendIds]);
 
@@ -198,6 +250,7 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
   const linkGap = 8;
 
   const linesLevels = useMemo(() => {
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
     return calculateLinesLevels(linksWithPos, lineStartX, lineWidth);
   }, [linksWithPos, lineStartX, lineWidth]);
 
@@ -206,6 +259,16 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
   }, [linesLevels, linkGap]);
 
   const lineHeights = Object.keys(linesLevels).map(l => +l);
+=======
+    return calcuateLinesLevels(linksWithPos, lineStartX, lineWidth);
+  }, [linksWithPos, lineStartX, lineWidth]);
+
+  const linkHeight = useMemo(() => {
+    return calcuateLinkHeight(linesLevels, linkGap);
+  }, [linesLevels, linkGap]);
+
+  const lineHeights = Object.keys(linesLevels).map((l) => +l);
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
 
   const textAreaClass = `text_area_container ${style.text_area_container} ${
     spacedText ? style.text_area_container_visible : ''
@@ -296,7 +359,11 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
       >
         {annotationsWithPosition.map((ann, i) => {
           const legend = annotationLegendsColored.find(
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
             legend => legend.entryName === ann.annotation.legendId
+=======
+            (legend) => legend.entryName === ann.annotation.legendId
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
           );
 
           if (!legend) {
@@ -409,7 +476,7 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
           pointerEvents: annoEditIsCreating ? 'none' : 'initial',
         }}
       >
-        {annotationsWithPosition.map(ann => {
+        {annotationsWithPosition.map((ann) => {
           const isSelected = ann.annotation.id === selectedAnnotationId;
 
           return (
@@ -430,7 +497,7 @@ function TextArea({textPack, annotationLegendsColored}: TextAreaProp) {
           pointerEvents: annoEditIsCreating ? 'none' : 'initial',
         }}
       >
-        {linksWithPos.map(linkPos => {
+        {linksWithPos.map((linkPos) => {
           const isLinkSelected = selectedLinkId === linkPos.link.id;
           const isLinkHightlighted =
             highlightedLinkIds.includes(linkPos.link.id) ||
@@ -511,11 +578,19 @@ function LineWithArrowContainer({
     linkEditToEntryId
   ) {
     const startAnnotation = annotationsWithPosition.find(
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
       link => link.annotation.id === linkEditFromEntryId
     );
 
     const endAnnotation = annotationsWithPosition.find(
       link => link.annotation.id === linkEditToEntryId
+=======
+      (link) => link.annotation.id === linkEditFromEntryId
+    );
+
+    const endAnnotation = annotationsWithPosition.find(
+      (link) => link.annotation.id === linkEditToEntryId
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
     );
 
     if (!startAnnotation || !endAnnotation) return null;
@@ -568,7 +643,11 @@ function ConnectorContainer({
 
   const textNodeRect = textNodeEl.getBoundingClientRect();
   const startAnnotation = annotationsWithPosition.find(
+<<<<<<< HEAD:src/nlpviewer/components/TextArea.tsx
     link => link.annotation.id === linkEditFromEntryId
+=======
+    (link) => link.annotation.id === linkEditFromEntryId
+>>>>>>> 6fe7a7deb55bd77f5f91c4e387bc7ec9e2da9486:src/components/TextArea.tsx
   );
 
   if (!startAnnotation) return null;
@@ -607,7 +686,7 @@ function getTextSelectionIndicators(
     range.setStart(textNode, begin);
     range.setEnd(textNode, end);
     const rects = Array.from(range.getClientRects() as DOMRectList);
-    const annoEditTextSelectionRect = rects.map(rect => ({
+    const annoEditTextSelectionRect = rects.map((rect) => ({
       x: rect.x - textAreaRect.left,
       y: rect.y - textAreaRect.top,
       width: rect.width,
